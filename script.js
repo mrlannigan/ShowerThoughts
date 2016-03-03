@@ -48,7 +48,7 @@ var loadFromNetwork = function () {
 		appstore.set({earth: {author: author, postUrl: postUrl, imageUrl: imageUrl}}, null);
 		setEarthPorn(author, postUrl, imageUrl);
 	});
-	$.getJSON("https://www.reddit.com/r/showerthoughts/top.json?sort=top&t=day&limit=20",function(json) {
+	$.getJSON("https://www.reddit.com/r/showerthoughts/top.json?sort=top&t=day&limit=50",function(json) {
 		var rand=Math.floor(Math.random() * 20);
 		var post=json.data.children[rand].data;
 		var quote=post.title;
