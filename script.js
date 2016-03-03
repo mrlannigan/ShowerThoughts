@@ -1,7 +1,7 @@
 var appstore = chrome.storage.sync;
 
 $('document').ready(function(){
-    refresh(false);
+    refresh(true);
 
     $('#refresh').click(function () { refresh(true); });
 
@@ -20,7 +20,7 @@ var refresh = function(force) {
     		var earth = data.earth;
     		setEarthPorn(earth.author, earth.postUrl, earth.imageUrl);
 
-    		var shower = data.shower;
+        var shower = data.shower;
     		setShowerThought(shower.author, shower.quote, shower.quoteUrl);
 
     	} else {
@@ -35,7 +35,7 @@ var isValidData = function (data) {
 };
 
 var loadFromNetwork = function () {
-	$.getJSON("https://www.reddit.com/r/earthporn/top.json?sort=top&t=month&limit=20",function(json){
+	$.getJSON("https://www.reddit.com/r/earthporn/top.json?sort=top&t=day&limit=20",function(json){
 		var rand=Math.floor(Math.random() * 20);
 		var post=json.data.children[rand].data;
 		var url=post.url;
@@ -48,7 +48,7 @@ var loadFromNetwork = function () {
 		appstore.set({earth: {author: author, postUrl: postUrl, imageUrl: imageUrl}}, null);
 		setEarthPorn(author, postUrl, imageUrl);
 	});
-	$.getJSON("https://www.reddit.com/r/showerthoughts/top.json?sort=top&t=month&limit=20",function(json) {
+	$.getJSON("https://www.reddit.com/r/showerthoughts/top.json?sort=top&t=day&limit=20",function(json) {
 		var rand=Math.floor(Math.random() * 20);
 		var post=json.data.children[rand].data;
 		var quote=post.title;
