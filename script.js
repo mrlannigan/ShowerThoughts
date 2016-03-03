@@ -49,7 +49,7 @@ var loadFromNetwork = function () {
 		setEarthPorn(author, postUrl, imageUrl);
 	});
 	$.getJSON("https://www.reddit.com/r/showerthoughts/top.json?sort=top&t=day&limit=50",function(json) {
-		var rand=Math.floor(Math.random() * 20);
+		var rand=Math.floor(Math.random() * 50);
 		var post=json.data.children[rand].data;
 		var quote=post.title;
 		var author=post.author;
